@@ -8,6 +8,7 @@ const nextConfig = {
   pageExtensions: ['jsx', 'mdx'],
   reactStrictMode: true,
   swcMinify: true,
+  output: 'export',
   experimental: {
     newNextLinkBehavior: true,
     scrollRestoration: true,
@@ -19,7 +20,7 @@ const withMDX = nextMDX({
   options: {
     remarkPlugins: [remarkGfm, remarkCodeTitles],
     rehypePlugins: [rehypePrismPlus, rehypePresetMinify],
-        providerImportSource: '@mdx-js/react',
+    providerImportSource: '@mdx-js/react',
   },
 })
 
