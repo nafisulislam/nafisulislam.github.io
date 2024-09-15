@@ -40,7 +40,7 @@ export default function Document() {
     <Html className="h-full antialiased" lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
-        <link
+        {/* <link
           rel="alternate"
           type="application/rss+xml"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.xml`}
@@ -49,14 +49,18 @@ export default function Document() {
           rel="alternate"
           type="application/feed+json"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
-        />
-        <link rel="me" href="https://tty0.social/@bketelsen" />
+        /> */}
+        {/* <link rel="me" href="https://tty0.social/@bketelsen" /> */}
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
         <Main />
         <NextScript />
-        <div style={{display: 'none'}}>        <a rel="me" href="https://tty0.social/@bketelsen">Mastodon</a>
-</div>
+        {/* <div style={{ display: 'none' }}>
+          {' '}
+          <a rel="me" href="https://tty0.social/@bketelsen">
+            Mastodon
+          </a>
+        </div> */}
       </body>
     </Html>
   )
