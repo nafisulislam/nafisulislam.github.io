@@ -56,7 +56,6 @@ export function WorkDetailsLayout({ children, meta }) {
         <Container className="mt-24 sm:mt-32 lg:mt-40">
           <FadeIn>
             <MDXComponents.wrapper>{children}</MDXComponents.wrapper>
-            MDXComponents.Typography
           </FadeIn>
         </Container>
       </article>
