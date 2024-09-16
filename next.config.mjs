@@ -5,15 +5,18 @@ import remarkCodeTitles from './src/lib/remark-code-title.mjs'
 import rehypePresetMinify from 'rehype-preset-minify'
 import { unifiedConditional } from 'unified-conditional'
 import escapeStringRegexp from 'escape-string-regexp'
+import rehypeShiki from '@leafac/rehype-shiki'
+import { remarkRehypeWrap } from 'remark-rehype-wrap'
+import shiki from 'shiki'
+import { recmaImportImages } from 'recma-import-images'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import * as path from 'path'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['jsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export',
   experimental: {
-    newNextLinkBehavior: true,
     scrollRestoration: true,
   },
 }
@@ -43,23 +46,70 @@ function remarkMDXLayout(source, metaName) {
   }
 }
 
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [
-      remarkGfm,
-      remarkCodeTitles,
-      [
-        unifiedConditional,
+export default async function config() {
+  let highlighter = await shiki.getHighlighter({
+    theme: 'css-variables',
+  })
+
+  let withMDX = nextMDX({
+    extension: /\.mdx$/,
+    options: {
+      recmaPlugins: [recmaImportImages],
+      rehypePlugins: [
+        [rehypeShiki, { highlighter }],
         [
-          new RegExp(`^${escapeStringRegexp(path.resolve('src/work'))}`),
-          [[remarkMDXLayout, '@/work/wrapper', 'caseStudy']],
+          remarkRehypeWrap,
+          {
+            node: { type: 'mdxJsxFlowElement', name: 'Typography' },
+            start: ':root > :not(mdxJsxFlowElement)',
+            end: ':root > mdxJsxFlowElement',
+          },
         ],
       ],
-    ],
-    rehypePlugins: [rehypePrismPlus, rehypePresetMinify],
-    providerImportSource: '@mdx-js/react',
-  },
-})
+      remarkPlugins: [
+        remarkGfm,
+        remarkUnwrapImages,
+        [
+          unifiedConditional,
+          // [
+          //   new RegExp(`^${escapeStringRegexp(path.resolve('src/work'))}`),
+          //   [[remarkMDXLayout, '@/work/wrapper', 'caseStudy']],
+          // ],
+        ],
+      ],
+    },
+  })
 
-export default withMDX(nextConfig)
+  return withMDX(nextConfig)
+}
+
+// const withMDX = nextMDX({
+//   extension: /\.mdx?$/,
+//   options: {
+//     remarkPlugins: [
+//       remarkGfm,
+//       remarkCodeTitles,
+//       [
+//         unifiedConditional,
+//         [
+//           new RegExp(`^${escapeStringRegexp(path.resolve('src/work'))}`),
+//           [[remarkMDXLayout, '@/work/wrapper', 'caseStudy']],
+//         ],
+//       ],
+//     ],
+//     rehypePlugins: [
+//       [rehypeShiki],
+//       [
+//         remarkRehypeWrap,
+//         {
+//           node: { type: 'mdxJsxFlowElement', name: 'Typography' },
+//           start: ':root > :not(mdxJsxFlowElement)',
+//           end: ':root > mdxJsxFlowElement',
+//         },
+//       ],
+//     ],
+//     providerImportSource: '@mdx-js/react',
+//   },
+// })
+
+// export default withMDX(nextConfig)

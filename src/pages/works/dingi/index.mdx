@@ -1,6 +1,10 @@
 import logo from '@/images/logos/dingi.svg'
 import imageHero from './hero.jpg'
 import imageEmilySelman from './emily-selman.jpg'
+import { Blockquote } from '@/components/Blockquote'
+import { TagList, TagListItem } from '@/components/TagList'
+import { StatList, StatListItem } from '@/components/StatList'
+import { WorkDetailsLayout } from '@/components/WorkDetailsLayout'
 
 export const meta = {
   title: 'Finest Local Map & Lifestyle App',
@@ -19,7 +23,10 @@ export const meta = {
     content:
       'We are incredibly grateful to ofPixel for their exceptional contribution in bringing Dingi Life to life. Their expertise and dedication have made it possible for us to provide a seamless and enriched map, navigation, and lifestyle service to users in Bangladesh. From the pioneering native Bangla support to the advanced real-time traffic features and access to essential services, ofPixel’s innovation and technical prowess have been instrumental in delivering an unparalleled experience to our users. Their commitment to excellence has truly transformed the way people navigate and interact with their city',
   },
+  href: 'works/dingi',
 }
+
+export default (props) => <WorkDetailsLayout meta={meta} {...props} />
 
 ## Overview
 
@@ -58,7 +65,7 @@ utilities like next prayer time, compass direction, weather condition etc.
 user activity is minimal or no networking call is active and then uses machine learning
 algorithm to classify a user based on activity and search
 
-## What Nafis did
+## What I did
 
 <TagList>
   <TagListItem>iOS</TagListItem>
@@ -68,25 +75,3 @@ algorithm to classify a user based on activity and search
   <TagListItem>Team Lead</TagListItem>
   <TagListItem>REST APIs</TagListItem>
 </TagList>
-
-<Blockquote
-  author={{
-    name: 'Sazal Kumer Hazra',
-    role: 'Managing Director & Co-Founder at dingi',
-  }}
-  image={{ src: imageEmilySelman }}
->
-  Nafis was verv dedicated and passionate about his work. His areas of responsibility were primarily front-end,
-  building mobile apps, and programming Backend codes
-  Nafis has shown extraordinary skills as a committed,
-  hardworking and creative software developer as well as great personality
-  traits.
-
-</Blockquote>
-
-<StatList>
-  <StatListItem value="34%" label="Fewer transactions" />
-  <StatListItem value="10%" label="Slower transactions" />
-  <StatListItem value="1000ms" label="Transaction latency" />
-  <StatListItem value="3" label="Active nodes" />
-</StatList>

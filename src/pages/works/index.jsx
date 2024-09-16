@@ -8,6 +8,7 @@ import { FadeIn } from '@/components/FadeIn'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/Button'
+import { Blockquote } from '@/components/Blockquote'
 
 // function Article({ article }) {
 //   return (
@@ -43,7 +44,7 @@ function CaseStudies({ caseStudies }) {
   return (
     <SimpleLayout>
       <FadeIn>
-        <h2 className="font-display text-neutral-950 text-2xl font-semibold">
+        <h2 className="text-neutral-950 font-display text-2xl font-semibold">
           Case studies
         </h2>
       </FadeIn>
@@ -76,8 +77,8 @@ function CaseStudies({ caseStudies }) {
                   </div>
                 </div>
                 <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
-                  <p className="font-display text-neutral-950 text-4xl font-medium">
-                    <Link href="#">{caseStudy.title}</Link>
+                  <p className="text-neutral-950 font-display text-4xl font-medium">
+                    <Link href={caseStudy.href}>{caseStudy.title}</Link>
                   </p>
                   <div className="mt-6 space-y-6 text-base text-neutral-600">
                     {caseStudy.summary.map((paragraph) => (
@@ -156,7 +157,6 @@ export async function getStaticProps() {
       works: (await getAllWorks()).map(
         ({ component, ...metaData }) => metaData
       ),
-      //   articles: (await getAllArticles()).map(({ component, ...meta }) => meta),
     },
   }
 }

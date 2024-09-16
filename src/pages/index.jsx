@@ -29,7 +29,7 @@ const image5 =
   'https://images.unsplash.com/photo-1541873676-a18131494184?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1318&q=80'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
-import { getAllArticles } from '@/lib/getAllArticles'
+// import { getAllArticles } from '@/lib/getAllArticles'
 
 function MailIcon(props) {
   return (
@@ -373,11 +373,11 @@ export default function Home({ articles }) {
       {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+          {/* <div className="flex flex-col gap-16">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
-          </div>
+          </div> */}
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             {/* <Newsletter /> */}
 
@@ -397,9 +397,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles: (await getAllArticles())
-        .slice(0, 4)
-        .map(({ component, ...meta }) => meta),
+      // articles: (await getAllArticles())
+      //   .slice(0, 4)
+      //   .map(({ component, ...meta }) => meta),
     },
   }
 }

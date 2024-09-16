@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   darkMode: 'class',
@@ -19,6 +22,19 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
     },
+    extend: {
+      borderRadius: {
+        '4xl': '2.5rem',
+      },
+      fontFamily: {
+        sans: ['Mona Sans', ...defaultTheme.fontFamily.sans],
+        display: [
+          ['Mona Sans', ...defaultTheme.fontFamily.sans],
+          { fontVariationSettings: '"wdth" 125' },
+        ],
+      },
+    },
+
     typography: (theme) => ({
       invert: {
         css: {
@@ -89,7 +105,7 @@ module.exports = {
           // Base
           color: 'var(--tw-prose-body)',
           lineHeight: theme('lineHeight.7'),
-       /*   '> *': {
+          /*   '> *': {
             marginTop: theme('spacing.10'),
             marginBottom: theme('spacing.10'),
           },
