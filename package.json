@@ -7,10 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cz": "git cz"
+    "cz": "git cz",
+    "static": "next build && next export"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2",
     "@headlessui/react": "^1.7.0",
     "@leafac/rehype-shiki": "^2.2.1",
     "@mapbox/rehype-prism": "^0.8.0",

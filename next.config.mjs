@@ -15,9 +15,13 @@ import * as path from 'path'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   reactStrictMode: true,
+  output: 'export',
   swcMinify: true,
   experimental: {
     scrollRestoration: true,
+  },
+  images: {
+    unoptimized: true,
   },
 }
 
