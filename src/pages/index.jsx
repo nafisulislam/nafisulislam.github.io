@@ -28,6 +28,7 @@ const image4 =
 const image5 =
   'https://images.unsplash.com/photo-1541873676-a18131494184?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1318&q=80'
 import { formatDate } from '@/lib/formatDate'
+import { getAllWorks } from '@/lib/getAllWork'
 // import { getAllArticles } from '@/lib/getAllArticles'
 
 function MailIcon(props) {
@@ -100,6 +101,21 @@ function Article({ article }) {
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
       <Card.Cta>Read article</Card.Cta>
+    </Card>
+  )
+}
+
+function FeaturedProject({ article }) {
+  return (
+    <Card as="article">
+      <Card.Title href={`/projects/${article.slug}`}>
+        {article.title}
+      </Card.Title>
+      <Card.Eyebrow as="time" dateTime={article.date} decorate>
+        {formatDate(article.date)}
+      </Card.Eyebrow>
+      <Card.Description>{article.description}</Card.Description>
+      <Card.Cta>Read details</Card.Cta>
     </Card>
   )
 }
@@ -309,7 +325,7 @@ function Photos() {
   )
 }
 
-export default function Home({ articles }) {
+export default function Home({ projects }) {
   return (
     <>
       <Head>
@@ -372,11 +388,11 @@ export default function Home({ articles }) {
       {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          {/* <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+          <div className="flex flex-col gap-16">
+            {projects.map((project) => (
+              <FeaturedProject key={project.slug} article={project} />
             ))}
-          </div> */}
+          </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             {/* <Newsletter /> */}
 
@@ -392,9 +408,9 @@ export default function Home({ articles }) {
 export async function getStaticProps() {
   return {
     props: {
-      // articles: (await getAllArticles())
-      //   .slice(0, 4)
-      //   .map(({ component, ...meta }) => meta),
+      projects: (await getAllWorks()).map(
+        ({ component, ...metaData }) => metaData
+      ),
     },
   }
 }
