@@ -44,7 +44,7 @@ function CaseStudies({ caseStudies }) {
   return (
     <SimpleLayout>
       <FadeIn>
-        <h2 className="text-neutral-950 font-display text-2xl font-semibold">
+        <h2 className="font-display text-2xl font-semibold text-zinc-800 dark:text-zinc-100">
           Case studies
         </h2>
       </FadeIn>
@@ -61,15 +61,15 @@ function CaseStudies({ caseStudies }) {
                       className="h-16 w-16 flex-none"
                       unoptimized
                     />
-                    <h3 className="text-neutral-950 mt-6 text-sm font-semibold sm:mt-0 lg:mt-8">
+                    <h3 className="mt-6 text-sm font-semibold text-zinc-800 dark:text-zinc-100 sm:mt-0 lg:mt-8">
                       {caseStudy.client}
                     </h3>
                   </div>
                   <div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
-                    <p className="text-neutral-950 text-sm tracking-tight after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
+                    <p className="text-sm tracking-tight text-zinc-800 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] dark:text-zinc-100 lg:mt-2 lg:after:hidden">
                       {caseStudy.service}
                     </p>
-                    <p className="text-neutral-950 text-sm lg:mt-2">
+                    <p className="text-sm text-zinc-800 dark:text-zinc-100 lg:mt-2">
                       <time dateTime={caseStudy.date}>
                         {formatDate(caseStudy.date)}
                       </time>
@@ -77,10 +77,10 @@ function CaseStudies({ caseStudies }) {
                   </div>
                 </div>
                 <div className="col-span-full lg:col-span-2 lg:max-w-2xl">
-                  <p className="text-neutral-950 font-display text-4xl font-medium">
+                  <p className="font-display text-4xl font-medium text-zinc-800 dark:text-zinc-100">
                     <Link href={caseStudy.href}>{caseStudy.title}</Link>
                   </p>
-                  <div className="mt-6 space-y-6 text-base text-neutral-600">
+                  <div className="mt-6 space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                     {caseStudy.summary.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}

@@ -1,5 +1,13 @@
+:root {
+  --color-text: theme(colors.zinc.800);
+}
+
+:root[class~='dark'] {
+  --color-text: theme(colors.zinc.100);
+}
+
 .typography {
-  color: theme(colors.neutral.900);
+  color: var(--color-text);
   font-size: theme(fontSize.xl);
   line-height: theme(fontSize.xl[1].lineHeight);
 
