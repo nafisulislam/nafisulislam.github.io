@@ -13,7 +13,7 @@ const siteMeta = {
   title: 'Md Nafiusl Islam',
   description:
     'Md Nafiusl Islam is a developer advocate, keynote speaker, author, and open source practitioner.',
-  copyright: 'Md Nafiusl Islam, CC-BY-SA',
+  copyright: 'Md Nafiusl Islam',
   author: {
     name: 'Md Nafiusl Islam',
     email: 'nafis.ofpixel.com',
