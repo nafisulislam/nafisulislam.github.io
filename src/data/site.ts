@@ -13,5 +13,7 @@ const files = import.meta.glob<{ default: ImageMetadata }>('../assets/apps/*/*.j
 // Artwork saved by scripts/fetch-apps.mjs; empty for projects without an App Store listing.
 export const art = (id: string | null) => {
   const pick = (n: string) => files[`../assets/apps/${id}/${n}.jpg`]?.default;
-  return { icon: pick('icon'), shots: ['1', '2', '3'].map(pick).filter((s) => s !== undefined) };
+  const set = (suffix: string) => ['1', '2', '3'].map((n) => pick(n + suffix)).filter((s) => s !== undefined);
+  // <n>-light.jpg is an optional set shown in the light theme.
+  return { icon: pick('icon'), shots: set(''), light: set('-light') };
 };
