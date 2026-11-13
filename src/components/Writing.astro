@@ -1,0 +1,32 @@
+---
+import { profile, month } from '../data/site';
+---
+
+<section id="writing" class="wrap">
+  <h2 class="reveal">Writing</h2>
+  <ul>
+    {profile.writing.map((w) => (
+      <li class="reveal">
+        <a href={w.url}>
+          <span class="label">{w.source} {w.kind.toLowerCase()}{'date' in w && ` · ${month(w.date)}`}</span>
+          <span class="t">{w.title}</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  a { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1.5rem; align-items: baseline; padding-block: 1.5rem; border-top: 1px solid var(--line); }
+  li:last-child a { border-bottom: 1px solid var(--line); }
+  .label { grid-column: 1 / -1; }
+  .t { max-width: 32ch; font-size: clamp(1.375rem, 2.6vw, 2rem); font-weight: 600; font-stretch: 88%; letter-spacing: -0.02em; line-height: 1.15; transition: color 0.2s; }
+  .arrow { font-size: 1.5rem; color: var(--muted); transition: transform 0.3s var(--ease), color 0.2s; }
+  a:hover .arrow { color: var(--accent); transform: translate(4px, -4px); }
+  ul:hover a:not(:hover) .t { color: var(--muted); }
+  @media (min-width: 56rem) {
+    a { grid-template-columns: 15rem 1fr auto; gap: 2rem; padding-block: 2rem; }
+    .label { grid-column: auto; }
+  }
+</style>

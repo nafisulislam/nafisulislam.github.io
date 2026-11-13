@@ -1,0 +1,34 @@
+---
+import { profile } from '../data/site';
+---
+
+<section class="wrap grid">
+  <div class="reveal">
+    <h2 class="label">Skills</h2>
+    <ul class="skills">{profile.skills.map((s) => <li>{s}</li>)}</ul>
+  </div>
+  <div class="reveal">
+    <h2 class="label">Education</h2>
+    {profile.education.map((e) => (
+      <p class="edu">
+        <strong>{e.school}</strong>
+        <span>{e.degree}, {e.end}</span>
+        <span class="muted">{e.note}</span>
+      </p>
+    ))}
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; gap: 3.5rem; }
+  .label { margin-bottom: 1.25rem; }
+  .skills { font-size: clamp(1.5rem, 3.4vw, 2.5rem); font-weight: 600; font-stretch: 85%; letter-spacing: -0.02em; line-height: 1.15; }
+  .skills li { display: inline-block; margin-right: 0.3em; }
+  .skills li:not(:last-child)::after { content: ','; color: var(--muted); }
+  .skills li:nth-child(n + 9) { color: var(--muted); }
+  .edu { display: grid; gap: 0.35rem; }
+  .edu strong { font-size: 1.375rem; font-weight: 600; font-stretch: 88%; letter-spacing: -0.02em; line-height: 1.2; }
+  @media (min-width: 56rem) {
+    .grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 6rem; }
+  }
+</style>

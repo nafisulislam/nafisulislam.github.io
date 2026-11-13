@@ -1,0 +1,23 @@
+---
+import { profile } from '../data/site';
+
+const { email, linkedin, medium } = profile.contact;
+---
+
+<footer id="contact" class="wrap">
+  <h2 class="label reveal">Contact · {profile.location}</h2>
+  <a class="mail display reveal" href={`mailto:${email}`}>{email}</a>
+  <p class="links reveal">
+    <a class="link" href={linkedin}>LinkedIn <span aria-hidden="true">↗</span></a>
+    <a class="link" href={medium}>Medium <span aria-hidden="true">↗</span></a>
+  </p>
+  <p class="label fine">© {new Date().getFullYear()} {profile.name}</p>
+</footer>
+
+<style>
+  footer { display: grid; gap: 1.5rem; justify-items: start; padding-block: clamp(4.5rem, 11vw, 9rem) 2.5rem; border-top: 1px solid var(--line); }
+  .mail { overflow-wrap: anywhere; font-size: clamp(1.75rem, 8.2vw, 7rem); line-height: 1.05; background: linear-gradient(var(--accent) 0 0) 0 100% / 0 0.06em no-repeat; transition: background-size 0.5s var(--ease), color 0.3s; }
+  .mail:hover { background-size: 100% 0.06em; }
+  .links { display: flex; gap: 1.5rem; }
+  .fine { margin-top: clamp(3rem, 8vw, 6rem); }
+</style>

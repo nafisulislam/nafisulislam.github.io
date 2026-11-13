@@ -1,0 +1,332 @@
+{
+  "name": "Md Nafisul Islam",
+  "shortName": "Nafis",
+  "headline": "AI driven iOS | Swift | SwiftUI | Django | Flutter | React Native",
+  "role": "Senior Full Stack Engineer",
+  "location": "Dhaka, Bangladesh",
+  "careerStart": "2017-03",
+  "openToWork": {
+    "status": true,
+    "modes": [
+      "On-site",
+      "Hybrid",
+      "Remote"
+    ]
+  },
+  "about": "iOS Mobile App Developer with a solid skill set in iOS framework, Swift, Objective-C, Flutter, and more. Expertise lies in developing mobile applications, utilizing various technologies and frameworks. With a keen eye for detail and a strong understanding of industry best practices, adept at delivering high-quality, user-friendly, and efficient software solutions. A proactive problem solver, constantly seeking opportunities to enhance my skills and stay up-to-date with the latest advancements in mobile development.",
+  "services": [
+    "iOS Development",
+    "Mobile Application Development",
+    "Web Development",
+    "User Experience Design"
+  ],
+  "contact": {
+    "email": "nafis00001@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/nafisulislam/",
+    "website": "https://nafisulislam.github.io",
+    "medium": "https://medium.com/@nfs.cse"
+  },
+  "experience": [
+    {
+      "company": "Kahf Yazılım A.Ş.",
+      "title": "Senior iOS Engineer",
+      "type": "Full-time",
+      "start": "2025-04",
+      "end": null,
+      "location": "Dhaka, Bangladesh · Hybrid",
+      "highlights": [
+        "Integrated an on-device AI model to detect and blur sensitive or inappropriate content within images dynamically.",
+        "Implemented DNS-over-HTTPS (DoH) to securely resolve domain names, enabling content filtering and preventing access to harmful or unwanted websites.",
+        "Leveraged Swift Concurrency to parallelize image processing tasks and optimized real-time mask rendering over images to reduce latency.",
+        "Rewrote the iOS and macOS app from React Native to native SwiftUI.",
+        "Implemented the Family Controls API to block apps or categories and showed users their app usage through graphs.",
+        "Implemented a full habit tracker feature."
+      ],
+      "skills": [
+        "Swift",
+        "SwiftUI",
+        "Swift Concurrency",
+        "Artificial Intelligence (AI)",
+        "AI Model"
+      ]
+    },
+    {
+      "company": "OFPIXEL",
+      "title": "Co-Founder",
+      "type": "Full-time",
+      "start": "2025-01",
+      "end": null,
+      "location": "Remote",
+      "highlights": [],
+      "skills": []
+    },
+    {
+      "company": "ShareTrip",
+      "title": "Mobile App Team Lead",
+      "type": "Full-time",
+      "start": "2023-05",
+      "end": "2025-03",
+      "location": "Dhaka, Bangladesh · On-site",
+      "highlights": [
+        "Migrated an existing UIKit codebase to modern SwiftUI while shipping new features, integrating SwiftUI with legacy UIKit components.",
+        "Led the iOS app redesign (flight search, hotel search, holiday planning), increasing app downloads by 15% and boosting ticket sales by 32%.",
+        "Helped move the app from travel-only to a lifestyle platform (mobile recharge, utility bill payment, shopping), increasing app downloads by 70% over 3 months.",
+        "Led a team of developers, coordinated with product managers and designers, conducted code reviews, and mentored junior developers.",
+        "Developed the ShareTrip Flight SDK so other apps can embed flight booking.",
+        "Designed and implemented STPay core features: Add Money, Send Money, Request Money, and Merchant Payment.",
+        "Redesigned STPay login and registration so users can verify their account with their National ID within minutes.",
+        "Built the STPay SDK, allowing third-party developers to integrate STPay's financial services into their own apps."
+      ],
+      "skills": [
+        "SwiftUI",
+        "MVVM",
+        "UIKit",
+        "SDK development",
+        "Mentoring"
+      ]
+    },
+    {
+      "company": "Ridmik Labs",
+      "title": "Software Engineer",
+      "type": "Full-time",
+      "start": "2019-06",
+      "end": "2023-04",
+      "location": "Dhaka, Bangladesh · On-site",
+      "highlights": [
+        "Rewrote core elements of Ridmik Keyboard to improve typing speed and memory efficiency, resolving performance complaints and improving user reviews.",
+        "Implemented contextual word suggestions, increasing app impressions by 3% (1M) and downloads by 1% (267K) within 3 months.",
+        "Introduced and refined keyboard features such as emojis, GIFs, and stickers.",
+        "Developed paid custom themes, creating a new revenue stream for the app.",
+        "Redesigned the Boitoi app with UI/UX designers and implemented ebook streaming so users can read without downloading.",
+        "Developed the Comic Books feature and a bridge between native Swift code and JavaScript-based web views."
+      ],
+      "skills": [
+        "Objective-C",
+        "Swift",
+        "Flutter",
+        "JavaScript"
+      ]
+    },
+    {
+      "company": "Dingi Technologies Limited",
+      "title": "Team Lead of Map Team & Apps Division",
+      "type": "Full-time",
+      "start": "2018-11",
+      "end": "2019-06",
+      "location": "Bangladesh",
+      "highlights": [],
+      "skills": [
+        "Mobile Applications"
+      ]
+    },
+    {
+      "company": "Dingi Technologies Limited",
+      "title": "Senior Software Engineer",
+      "type": "Full-time",
+      "start": "2018-03",
+      "end": "2018-10",
+      "location": "Bangladesh",
+      "highlights": [],
+      "skills": [
+        "MVVM"
+      ]
+    },
+    {
+      "company": "Dingi Technologies Limited",
+      "title": "Software Engineer",
+      "type": "Full-time",
+      "start": "2017-03",
+      "end": "2018-02",
+      "location": "Bangladesh",
+      "highlights": [
+        "Developed the Dingi Life iOS app: enhanced map for Bangladesh, city bus service, live traffic, address search, and voice navigation.",
+        "Forked Mapbox (open source) to develop the DingiMap SDK for iOS, Android, and JavaScript."
+      ],
+      "skills": [
+        "REST APIs"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Kahf Guard",
+      "company": "Kahf Yazılım A.Ş.",
+      "period": "2025 – Present",
+      "appStoreId": "6479974796",
+      "url": "https://apps.apple.com/us/app/kahf-guard-parental-control/id6479974796",
+      "summary": "Designed and developed the entire iOS experience solo — from UI/UX design through SwiftUI implementation and architecture. Built with SwiftUI and the iOS 26 Liquid Glass design.",
+      "points": [
+        "Blocks harmful sites through Kahf DNS",
+        "Tracks daily habits",
+        "Monitors screen time",
+        "On-device AI that detects and blurs sensitive images"
+      ],
+      "tags": [
+        "SwiftUI",
+        "Liquid Glass",
+        "Family Controls",
+        "DoH",
+        "On-device AI"
+      ]
+    },
+    {
+      "name": "ShareTrip",
+      "company": "ShareTrip",
+      "period": "2023 – 2025",
+      "appStoreId": "1469335892",
+      "url": "https://apps.apple.com/us/app/sharetrip-flight-shop-voucher/id1469335892",
+      "summary": "The #1 online travel companion app in Bangladesh, serving more than 3 million travelers. Led the iOS team; implemented the redesigned flight, hotel and holiday booking journeys and lifestyle features (shop, voucher, top-up, utility bill payment).",
+      "points": [
+        "+32% ticket sales after redesign",
+        "+15% app downloads after redesign",
+        "+70% downloads in 3 months after lifestyle pivot"
+      ],
+      "tags": [
+        "Swift",
+        "SwiftUI",
+        "UIKit",
+        "Team Lead"
+      ]
+    },
+    {
+      "name": "STPay — Spend, Save, Invest",
+      "company": "ShareTrip",
+      "period": "2023 – 2025",
+      "appStoreId": "1643458886",
+      "url": "https://apps.apple.com/us/app/st-pay-spend-save-invest/id1643458886",
+      "summary": "A Bangladeshi personal finance app. Built Add Money, Send Money, Request Money, Merchant Payment, National ID onboarding, utility bill payments, and the STPay SDK for third-party integration.",
+      "points": [
+        "Account verification with National ID in minutes",
+        "STPay SDK for third-party apps"
+      ],
+      "tags": [
+        "Swift",
+        "Fintech",
+        "SDK"
+      ]
+    },
+    {
+      "name": "Ridmik Keyboard",
+      "company": "Ridmik Labs",
+      "period": "2019 – 2023",
+      "appStoreId": "1475531051",
+      "url": "https://apps.apple.com/us/app/ridmik-keyboard/id1475531051",
+      "summary": "The first Bangla phonetic keyboard on iOS. Rewrote the typing core for speed under iOS's strict keyboard-extension memory limits, built context-aware suggestions, and shipped paid themes that turned a free app into a revenue-generating one.",
+      "points": [
+        "Contextual suggestions: app impressions +3% (1M) and downloads +1% (267K) within 3 months",
+        "Paid themes: first revenue stream"
+      ],
+      "tags": [
+        "Objective-C",
+        "Swift",
+        "Keyboard Extension"
+      ]
+    },
+    {
+      "name": "Boitoi — Bangla eBook Reader",
+      "company": "Ridmik Labs",
+      "period": "2019 – 2023",
+      "appStoreId": "1505698833",
+      "url": "https://apps.apple.com/us/app/boitoi-bangla-ebook-reader/id1505698833",
+      "summary": "Ebook reader and book store for Bangladeshi readers and writers. Implemented download, streaming and purchase flows, a redesigned interface, and a Comic Books reader, plus a native Swift ↔ JavaScript web-view bridge.",
+      "points": [
+        "Read by streaming, no download needed",
+        "Comic Books reader"
+      ],
+      "tags": [
+        "Swift",
+        "JavaScript",
+        "WebView"
+      ]
+    },
+    {
+      "name": "Dingi Life",
+      "company": "Dingi Technologies Limited",
+      "period": "2017 – 2019",
+      "appStoreId": "1377331887",
+      "url": "https://apps.apple.com/us/app/dingi-life/id1377331887",
+      "summary": "A navigation and companion app for Bangladesh: local map, city bus routes, live traffic, address search and voice navigation. Forked Mapbox to build the DingiMap SDK for iOS, Android and JavaScript.",
+      "points": [
+        "DingiMap SDK for iOS, Android, JavaScript"
+      ],
+      "tags": [
+        "Swift",
+        "Maps",
+        "SDK"
+      ]
+    },
+    {
+      "name": "Biotic",
+      "company": null,
+      "period": null,
+      "appStoreId": null,
+      "url": "https://biouilyn.github.io/demo-site/",
+      "summary": "A fully customizable Flutter telemedicine app UI kit, responsive and optimized for iOS and Android.",
+      "points": [],
+      "tags": [
+        "Flutter",
+        "UI Kit"
+      ]
+    },
+    {
+      "name": "Noir",
+      "company": null,
+      "period": null,
+      "appStoreId": null,
+      "url": "https://biouilyn.github.io/noir",
+      "summary": "A Flutter UI kit for e-commerce with fully responsive design, animations and transitions.",
+      "points": [],
+      "tags": [
+        "Flutter",
+        "UI Kit"
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "title": "Building an Opal-Like Carousel with Edge Blur & Scale Effects in SwiftUI",
+      "source": "Medium",
+      "url": "https://medium.com/@nfs.cse/building-an-opal-like-carousel-with-edge-blur-scale-effects-in-swiftui-c821cfd5379e",
+      "kind": "Article"
+    },
+    {
+      "title": "On switching my daily iOS workflow from Cursor to Zed",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7450792090277687296/",
+      "kind": "Post",
+      "date": "2026-04"
+    },
+    {
+      "title": "On designing and building the Kahf Guard iOS app",
+      "source": "LinkedIn",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7439376252391555072/",
+      "kind": "Post",
+      "date": "2026-03"
+    }
+  ],
+  "skills": [
+    "Swift",
+    "SwiftUI",
+    "UIKit",
+    "Objective-C",
+    "Swift Concurrency",
+    "MVVM",
+    "SDK development",
+    "On-device AI",
+    "Flutter",
+    "React Native",
+    "Django",
+    "JavaScript",
+    "REST APIs",
+    "User Experience Design",
+    "Mentoring"
+  ],
+  "education": [
+    {
+      "school": "Bangladesh University of Engineering and Technology",
+      "degree": "Bachelor of Science, Computer Engineering",
+      "end": "2017",
+      "note": "CGPA 3.77/4.00 · Class rank 22"
+    }
+  ]
+}

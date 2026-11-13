@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import { profile, statement, slug, art } from '../data/site';
+import me from '../assets/profile.jpg';
+
+const apps = profile.projects.map((p) => ({ ...p, icon: art(p.appStoreId).icon })).filter((p) => p.icon);
+const shots = profile.projects.flatMap((p) => art(p.appStoreId).shots);
+const { openToWork, contact } = profile;
+---
+
+<header class="hero">
+  {/* Backdrop: tilted columns of the real App Store screenshots, each list doubled so the drift loops seamlessly. */}
+  <div class="wall" aria-hidden="true">
+    {[0, 1, 2, 3, 4, 5].map((c) => (
+      <div style={`--t:${46 + c * 9}s`}>
+        {[0, 1].flatMap(() => [0, 1, 2, 3, 4].map((k) => <Image src={shots[(c * 5 + k * 7) % shots.length]} alt="" width={240} />))}
+      </div>
+    ))}
+  </div>
+  <div class="wrap inner">
+  <div class="who">
+    <Image class="me" src={me} alt={`Portrait of ${profile.name}`} width={72} densities={[1, 2, 3]} loading="eager" />
+    {openToWork.status && (
+      <p class="label status"><i></i><strong>Open to work</strong> · {openToWork.modes.join(', ')}</p>
+    )}
+  </div>
+  <h1>{profile.name}</h1>
+  <div class="row">
+    <div>
+      <p class="lede"><strong>{profile.role}</strong> in {profile.location}. {statement}</p>
+      <p class="cta">
+        <a class="btn" href={`mailto:${contact.email}`}>Get in touch</a>
+        <a class="link" href={contact.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a>
+      </p>
+    </div>
+    <div class="shipped">
+      <p class="label">Shipped on the App Store</p>
+      <div class="dock">
+        <i></i>
+        <ul>
+          {apps.map((p) => (
+            <li>
+              <a href={`#${slug(p.name)}`}>
+                <Image src={p.icon!} alt={p.name} width={64} densities={[1, 2, 3]} loading="eager" />
+                <span aria-hidden="true">{p.name.split(' — ')[0]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</header>
+
+<style>
+  .hero { position: relative; isolation: isolate; display: grid; align-content: end; min-height: 100svh; padding-block: 6rem clamp(2rem, 6vw, 4.5rem); overflow: hidden; }
+  .inner { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .wall { position: absolute; inset: -30% -10%; z-index: -1; display: flex; justify-content: center; gap: 1.25rem; rotate: -14deg; opacity: 0.6; mask-image: linear-gradient(to top, transparent 22%, #000 70%); }
+  .wall div { flex: 0 0 clamp(8rem, 15vw, 14rem); height: max-content; }
+  .wall img { width: 100%; margin-bottom: 1.25rem; border-radius: 1.25rem; box-shadow: 0 0 0 1px var(--line); }
+  /* Scrim keeps the name and copy readable over the shots. */
+  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, var(--bg) 18%, transparent 75%); }
+  @keyframes pulse { to { box-shadow: 0 0 0 0.6rem transparent; } }
+  @keyframes wall { to { transform: translateY(-50%); } }
+  .who { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: clamp(-1.75rem, -2vw, -0.75rem); }
+  .me { width: 2.75rem; border-radius: 50%; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--line); }
+  .status { font-size: clamp(0.6875rem, 2.9vw, 0.875rem); font-weight: 600; padding: 0.45rem 0.9rem 0.45rem 0.5rem; color: var(--text); background: color-mix(in srgb, var(--bg) 65%, transparent); border: 1px solid var(--line); border-radius: 99px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .status strong { font-weight: 800; color: var(--ok); }
+  .status i { display: inline-block; margin: 0 0.75em 0.05em 4px; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 22%, transparent); }
+  /* shortcut: ui-rounded is SF Rounded on Apple devices only, elsewhere the name falls back to the body font; self-host a rounded webfont for one look everywhere. */
+  h1 { font-family: ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', 'Instrument Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.02em; font-size: clamp(2.25rem, 6vw, 5.5rem); margin-left: -0.04em; }
+  .row { display: grid; gap: 2.5rem; }
+  .lede { max-width: 33ch; font-size: clamp(1.1875rem, 2vw, 1.5rem); line-height: 1.35; color: var(--muted); }
+  .lede strong { color: var(--text); font-weight: 500; }
+  .cta { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.75rem; }
+  .btn { padding: 0.8rem 1.4rem; font-weight: 600; color: var(--bg); background: var(--text); border-radius: 99px; transition: transform 0.3s var(--spring); }
+  .btn:hover { transform: scale(1.04); }
+  .btn:active { transform: scale(0.97); }
+
+  .shipped { display: grid; gap: 0.75rem; justify-items: start; }
+  .dock {
+    position: relative;
+    padding: clamp(0.6rem, 2vw, 0.9rem);
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: clamp(1.4rem, 5vw, 2rem);
+    box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.12);
+    transform: perspective(50rem) rotateX(calc(var(--my, 0) * -7deg)) rotateY(calc(var(--mx, 0) * 9deg));
+    transition: transform 0.4s ease-out;
+  }
+  /* Specular sheen that slides across the glass with the pointer. */
+  .dock > i { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
+  .dock > i::before {
+    content: '';
+    position: absolute;
+    inset: 0 -50%;
+    background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.14) 50%, transparent 60%);
+    transform: translateX(calc(var(--mx, 0) * 40%));
+    transition: transform 0.4s ease-out;
+  }
+  .dock ul { position: relative; display: flex; gap: clamp(0.6rem, 2.4vw, 1.1rem); }
+  .dock li { position: relative; transform-origin: bottom; transition: transform 0.35s var(--spring); }
+  .dock a { display: block; }
+  .dock img { width: clamp(2.75rem, 12.5vw, 4rem); border-radius: 22.5%; box-shadow: 0 0 0 1px var(--line); }
+  /* Name tooltips: wide screens only, where they cannot overflow the page. */
+  .dock span {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 0.6rem);
+    left: 50%;
+    translate: -50%;
+    padding: 0.3rem 0.6rem;
+    font: 0.75rem/1 var(--mono);
+    white-space: nowrap;
+    color: var(--bg);
+    background: var(--text);
+    border-radius: 99px;
+    opacity: 0;
+    transform: translateY(0.25rem) scale(0.8);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+  }
+  .dock li:is(:hover, :focus-within) span { opacity: 1; transform: none; }
+  /* Dock magnification: the hovered icon and its neighbours. */
+  .dock li:is(:hover, :focus-within) { transform: scale(1.3); }
+  .dock li:has(+ li:is(:hover, :focus-within)), .dock li:is(:hover, :focus-within) + li { transform: scale(1.12); }
+
+  @media (min-width: 56rem) {
+    .row { grid-template-columns: 1fr auto; align-items: end; }
+    .shipped { justify-items: end; }
+    .dock span { display: block; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .status i { animation: pulse 1.8s ease-out infinite; }
+    .wall div { animation: wall var(--t) linear infinite; }
+    .wall div:nth-child(even) { animation-direction: reverse; }
+    @supports (animation-timeline: view()) {
+      .inner > * { animation: rise 0.9s var(--ease) both; }
+      .inner > h1 { animation-delay: 0.08s; }
+      .inner > .row { animation-delay: 0.18s; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dock li, .btn { transform: none !important; }
+  }
+</style>
