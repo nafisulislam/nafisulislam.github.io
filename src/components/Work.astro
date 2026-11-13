@@ -12,38 +12,43 @@ const rich = (s: string) => s.split(metric);
 
 <section id="work" class="wrap">
   <h2 class="reveal">Selected work</h2>
-  {featured.map((p) => {
-    const [name, tagline] = p.name.split(' — ');
-    return (
-      <article id={slug(p.name)} class:list={['app', { art: p.shots.length }]}>
-        <div class="info reveal">
-          {p.icon && <Image class="icon" src={p.icon} alt="" width={76} densities={[1, 2]} loading="lazy" />}
-          <h3 class="display">{name}{tagline && <span class="muted"> — {tagline}</span>}</h3>
-          <p class="label">{p.period} · {p.company}</p>
-          <p class="summary">{p.summary}</p>
-          <ul class="tags">{p.tags.map((t) => <li>{t}</li>)}</ul>
-          {p.url && <a class="link" href={p.url} aria-label={`View on the App Store: ${name}`}>View on the App Store <span aria-hidden="true">↗</span></a>}
-        </div>
-        <ul class="points reveal">
-          {p.points.map((pt) => {
-            const [, n, text] = pt.match(/^(\+[\d.]+[%MK]) (.*)/) ?? [];
-            return n ? (
-              <li class="stat"><b class="display">{n}</b><span>{text}</span></li>
-            ) : (
-              <li>{rich(pt).map((s, i) => (i % 2 ? <b>{s}</b> : s))}</li>
-            );
-          })}
-        </ul>
-        {p.shots.length > 0 && (
-          <div class="shots" tabindex="0" role="group" aria-label={`${name} screenshots`}>
-            {p.shots.map((s, i) => (
-              <Picture src={s} formats={['avif']} fallbackFormat="webp" width={280} densities={[1, 2]} alt={`${name} on the App Store, screenshot ${i + 1}`} loading="lazy" />
-            ))}
+  <div class="deck" style={`timeline-scope: ${featured.slice(1).map((_, i) => `--c${i + 1}`).join(', ')}`}>
+    {featured.map((p, i) => {
+      const [name, tagline] = p.name.split(' — ');
+      return (
+        <article id={slug(p.name)} class="app" style={`view-timeline-name: --c${i}`}>
+          {/* Each card dims under the next one: its animation runs on the next card's view timeline. */}
+          <div class="card" style={`--c: ${p.tint ?? 'var(--accent)'}; animation-timeline: --c${i + 1}`}>
+            <div class="info">
+              {p.icon && <Image class="icon" src={p.icon} alt="" width={68} densities={[1, 2]} loading="lazy" />}
+              <h3 class="display">{name}{tagline && <span class="soft"> — {tagline}</span>}</h3>
+              <p class="label">{p.period} · {p.company}</p>
+              <p class="summary">{p.summary}</p>
+              <ul class="tags">{p.tags.map((t) => <li>{t}</li>)}</ul>
+              {p.url && <a class="link" href={p.url} aria-label={`View on the App Store: ${name}`}>View on the App Store <span aria-hidden="true">↗</span></a>}
+            </div>
+            <ul class="points">
+              {p.points.map((pt) => {
+                const [, n, text] = pt.match(/^(\+[\d.]+[%MK]) (.*)/) ?? [];
+                return n ? (
+                  <li class="stat"><b class="display">{n}</b><span>{text}</span></li>
+                ) : (
+                  <li>{rich(pt).map((s, i) => (i % 2 ? <b>{s}</b> : s))}</li>
+                );
+              })}
+            </ul>
+            {p.shots.length > 0 && (
+              <div class="shots">
+                {p.shots.map((s, i) => (
+                  <Picture src={s} formats={['avif']} fallbackFormat="webp" width={280} densities={[1, 2]} alt={`${name} on the App Store, screenshot ${i + 1}`} loading="lazy" />
+                ))}
+              </div>
+            )}
           </div>
-        )}
-      </article>
-    );
-  })}
+        </article>
+      );
+    })}
+  </div>
 
   <h3 class="label also reveal">Also built</h3>
   <ul class="kits">
@@ -60,32 +65,37 @@ const rich = (s: string) => s.split(metric);
 </section>
 
 <style>
-  .app { display: grid; gap: 2rem; padding-block: clamp(2.5rem, 7vw, 6rem); border-top: 1px solid var(--line); scroll-margin-top: 3rem; }
-  .app > * { min-width: 0; }
-  .info { display: grid; gap: 1rem; justify-items: start; }
-  .icon { width: 4.75rem; border-radius: 22.5%; box-shadow: 0 0 0 1px var(--line), var(--shadow); margin-bottom: 0.5rem; }
-  .app h3 { font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1; }
-  .app:first-of-type h3 { font-size: clamp(2.75rem, 6.4vw, 4.75rem); }
-  .summary { max-width: 46ch; color: var(--muted); }
+  /* Each app is a tinted card. On tall desktop screens the cards pin and stack like a deck. */
+  .app { padding-bottom: 1.5rem; }
+  .card { --pad: clamp(1.25rem, 4vw, 3.5rem); display: grid; gap: 1.75rem; padding: var(--pad); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--line)); border-radius: clamp(1.75rem, 4vw, 2.5rem); background: radial-gradient(120% 130% at 100% 0%, color-mix(in srgb, var(--c) 50%, var(--bg)), color-mix(in srgb, var(--c) 10%, var(--bg)) 62%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), var(--shadow); overflow: hidden; transform-origin: top; }
+  .card > * { min-width: 0; }
+  .info { display: grid; gap: 0.9rem; justify-items: start; }
+  .icon { width: 4.25rem; border-radius: 22.5%; box-shadow: 0 0 0 1px var(--line), var(--shadow); }
+  .app h3 { font-size: clamp(2rem, 4.4vw, 3.5rem); line-height: 1; }
+  .soft, .summary, .points { color: color-mix(in srgb, var(--text) 72%, transparent); }
+  .summary { max-width: 46ch; }
 
-  .points { border-top: 1px solid var(--line); }
-  .points li { padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
-  .stat { display: grid; grid-template-columns: 6.25rem 1fr; align-items: baseline; gap: 1rem; color: var(--muted); }
-  .stat .display { font-size: 2.75rem; line-height: 1; color: var(--accent); }
-  .points b { font-weight: 600; }
-  .points li:not(.stat):has(b) { color: var(--muted); }
-  .points li:not(.stat) b { color: var(--text); }
+  .points { order: 1; border-top: 1px solid var(--line); }
+  .points li { padding-block: 0.65rem; border-bottom: 1px solid var(--line); }
+  .stat { display: grid; grid-template-columns: 5.5rem 1fr; align-items: baseline; gap: 1rem; }
+  .stat .display { font-size: 2.25rem; line-height: 1; }
+  .points b { font-weight: 600; color: var(--text); }
 
-  /* No App Store artwork: the points become the visual. */
-  .app:not(.art) h3 { font-size: clamp(3rem, 9vw, 6.5rem); }
-  .app:not(.art) .points { counter-reset: p; }
-  .app:not(.art) .points li { display: grid; grid-template-columns: 2.5rem 1fr; align-items: baseline; padding-block: 1.1rem; font-size: clamp(1.375rem, 2.6vw, 2.125rem); font-weight: 600; font-stretch: 85%; letter-spacing: -0.02em; line-height: 1.1; }
-  .app:not(.art) .points li::before { counter-increment: p; content: counter(p, decimal-leading-zero); font: 400 0.8125rem var(--mono); letter-spacing: 0; color: var(--accent); }
+  /* Coverflow: one screenshot in front, two angled behind. These static positions are also the reduced-motion state. */
+  .shots { --h: clamp(16rem, 44svh, 21rem); display: grid; place-items: center; height: var(--h); perspective: 70rem; }
+  .shots :global(picture) { grid-area: 1 / 1; }
+  .shots :global(img) { height: var(--h); width: auto; border-radius: 1.4rem; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -25px rgb(0 0 0 / 0.6); }
+  .shots :global(picture:nth-child(1)) { z-index: 1; }
+  .shots :global(picture:nth-child(2)) { transform: translateX(-58%) rotateY(30deg) scale(0.78); opacity: 0.6; }
+  .shots :global(picture:nth-child(3)) { transform: translateX(58%) rotateY(-30deg) scale(0.78); opacity: 0.6; }
 
-  /* Screenshots sit on rounded plates like the App Store itself; a swipeable strip on small screens. */
-  .shots { display: flex; gap: 0.75rem; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .shots :global(picture) { flex: 0 0 min(58%, 15rem); scroll-snap-align: center; }
-  .shots :global(img) { width: 100%; border-radius: 1.25rem; box-shadow: 0 0 0 1px var(--line), var(--shadow); }
+  @keyframes flow {
+    0%, 26% { transform: none; opacity: 1; z-index: 3; }
+    33.3%, 59% { transform: translateX(-58%) rotateY(30deg) scale(0.78); opacity: 0.6; z-index: 1; }
+    66.6%, 93% { transform: translateX(58%) rotateY(-30deg) scale(0.78); opacity: 0.6; z-index: 1; }
+    to { transform: none; opacity: 1; z-index: 3; }
+  }
+  @keyframes tuck { to { scale: 0.9; filter: brightness(0.45); } }
 
   .also { margin-top: 1rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
   .kits { display: grid; gap: 1rem; margin-top: 1.5rem; }
@@ -95,21 +105,27 @@ const rich = (s: string) => s.split(metric);
   .kits h3 span { display: inline-block; font-size: 0.6em; color: var(--muted); transition: transform 0.3s var(--ease); }
   .kits a:hover h3 span { transform: translate(3px, -3px); }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .shots :global(picture) { animation: flow 9s var(--ease) infinite; }
+    .shots :global(picture:nth-child(2)) { animation-delay: -3s; }
+    .shots :global(picture:nth-child(3)) { animation-delay: -6s; }
+  }
   @media (min-width: 56rem) {
-    .app { grid-template: 'info shots' auto 'points shots' 1fr / minmax(0, 5fr) minmax(0, 6fr); column-gap: clamp(3rem, 7vw, 7rem); }
-    .app:not(.art) { grid-template: 'info points' / minmax(0, 5fr) minmax(0, 6fr); align-items: end; }
-    .app.art:nth-of-type(odd) { grid-template: 'shots info' auto 'shots points' 1fr / minmax(0, 6fr) minmax(0, 5fr); }
+    .card { --pad: clamp(2rem, 3.5vw, 3rem); grid-template: 'info shots' 'points points' / minmax(0, 5fr) minmax(0, 6fr); column-gap: clamp(2rem, 5vw, 5rem); }
     .info { grid-area: info; }
-    .points { grid-area: points; }
-    .shots { grid-area: shots; align-self: center; margin: 0; padding: 3.5rem 0; overflow: visible; }
-    .shots :global(picture) { flex: 1; }
-    .shots :global(picture:nth-child(1)) { --d: 1.5rem; }
-    .shots :global(picture:nth-child(2)) { --d: -2rem; }
-    .shots :global(picture:nth-child(3)) { --d: 3.25rem; }
+    /* Points run across the card foot so the card stays short enough to pin. */
+    .points { grid-area: points; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1.5rem; }
+    .points li { padding-block: 0.9rem 0; border: 0; }
+    .stat { grid-template-columns: none; gap: 0.25rem; }
+    .shots { --h: clamp(18rem, 46svh, 27rem); grid-area: shots; align-self: center; }
     .kits { grid-template-columns: 1fr 1fr; }
-    @media (prefers-reduced-motion: no-preference) {
-      @supports (animation-timeline: view()) {
-        .shots :global(picture) { animation: drift linear both; animation-timeline: var(--view); }
+    /* shortcut: pinning needs the whole card on screen, so short windows and phones scroll the cards normally */
+    @media (min-height: 48rem) {
+      .app { position: sticky; top: 4.5rem; scroll-margin-top: -0.5rem; }
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          .app:not(:last-child) .card { animation: tuck linear both; animation-range: entry 10% cover 45%; }
+        }
       }
     }
   }

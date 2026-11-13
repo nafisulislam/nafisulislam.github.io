@@ -167,7 +167,8 @@
         "Family Controls",
         "DoH",
         "On-device AI"
-      ]
+      ],
+      "tint": "#1fa971"
     },
     {
       "name": "Kahf Browser",
@@ -187,7 +188,8 @@
         "On-device AI",
         "DoH",
         "Swift Concurrency"
-      ]
+      ],
+      "tint": "#7c4dff"
     },
     {
       "name": "Loopy AI — Live Wallpapers 4K",
@@ -207,7 +209,8 @@
         "Django",
         "Widgets",
         "Full Stack"
-      ]
+      ],
+      "tint": "#ff5fa2"
     },
     {
       "name": "ShareTrip",
@@ -226,7 +229,8 @@
         "SwiftUI",
         "UIKit",
         "Team Lead"
-      ]
+      ],
+      "tint": "#1a73e8"
     },
     {
       "name": "STPay — Spend, Save, Invest",
@@ -243,7 +247,8 @@
         "Swift",
         "Fintech",
         "SDK"
-      ]
+      ],
+      "tint": "#2456c9"
     },
     {
       "name": "Ridmik Keyboard",
@@ -260,7 +265,8 @@
         "Objective-C",
         "Swift",
         "Keyboard Extension"
-      ]
+      ],
+      "tint": "#6aa81e"
     },
     {
       "name": "Boitoi — Bangla eBook Reader",
@@ -277,7 +283,8 @@
         "Swift",
         "JavaScript",
         "WebView"
-      ]
+      ],
+      "tint": "#2f80ed"
     },
     {
       "name": "Dingi Life",
@@ -293,7 +300,8 @@
         "Swift",
         "Maps",
         "SDK"
-      ]
+      ],
+      "tint": "#19a99b"
     },
     {
       "name": "OnFocus — Focus & Meditation",
