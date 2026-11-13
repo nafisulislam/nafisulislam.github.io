@@ -233,24 +233,6 @@
       "tint": "#1a73e8"
     },
     {
-      "name": "STPay — Spend, Save, Invest",
-      "company": "ShareTrip",
-      "period": "2023 – 2025",
-      "appStoreId": "1643458886",
-      "url": "https://apps.apple.com/us/app/st-pay-spend-save-invest/id1643458886",
-      "summary": "A Bangladeshi personal finance app. Built Add Money, Send Money, Request Money, Merchant Payment, National ID onboarding, utility bill payments, and the STPay SDK for third-party integration.",
-      "points": [
-        "Account verification with National ID in minutes",
-        "STPay SDK for third-party apps"
-      ],
-      "tags": [
-        "Swift",
-        "Fintech",
-        "SDK"
-      ],
-      "tint": "#2456c9"
-    },
-    {
       "name": "Ridmik Keyboard",
       "company": "Ridmik Labs",
       "period": "2019 – 2023",
@@ -285,6 +267,24 @@
         "WebView"
       ],
       "tint": "#2f80ed"
+    },
+    {
+      "name": "STPay — Spend, Save, Invest",
+      "company": "ShareTrip",
+      "period": "2023 – 2025",
+      "appStoreId": "1643458886",
+      "url": "https://apps.apple.com/us/app/st-pay-spend-save-invest/id1643458886",
+      "summary": "A Bangladeshi personal finance app. Built Add Money, Send Money, Request Money, Merchant Payment, National ID onboarding, utility bill payments, and the STPay SDK for third-party integration.",
+      "points": [
+        "Account verification with National ID in minutes",
+        "STPay SDK for third-party apps"
+      ],
+      "tags": [
+        "Swift",
+        "Fintech",
+        "SDK"
+      ],
+      "tint": "#2456c9"
     },
     {
       "name": "Dingi Life",
