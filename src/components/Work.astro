@@ -48,7 +48,7 @@ const rich = (s: string) => s.split(metric);
   <h3 class="label also reveal">Also built</h3>
   <ul class="kits">
     {rest.map((p) => (
-      <li class="reveal">
+      <li id={slug(p.name)} class="reveal">
         <a href={p.url}>
           <h3 class="display">{p.name} <span aria-hidden="true">↗</span></h3>
           <p class="muted">{p.summary}</p>

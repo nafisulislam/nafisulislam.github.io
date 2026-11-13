@@ -170,6 +170,46 @@
       ]
     },
     {
+      "name": "Kahf Browser",
+      "company": "Kahf Yazılım A.Ş.",
+      "period": "2025 – Present",
+      "appStoreId": "6478084743",
+      "url": "https://apps.apple.com/us/app/kahf-browser/id6478084743",
+      "summary": "A private, ad-free iOS browser that keeps browsing clean. Integrated an on-device AI model that detects and blurs inappropriate images as pages load, and DNS-over-HTTPS filtering that blocks harmful sites.",
+      "points": [
+        "On-device AI detects and blurs sensitive images",
+        "DNS-over-HTTPS content filtering",
+        "Swift Concurrency parallelizes image processing",
+        "Real-time mask rendering tuned for low latency"
+      ],
+      "tags": [
+        "Swift",
+        "On-device AI",
+        "DoH",
+        "Swift Concurrency"
+      ]
+    },
+    {
+      "name": "Loopy AI — Live Wallpapers 4K",
+      "company": "OFPIXEL",
+      "period": "2025 – Present",
+      "appStoreId": "6753658744",
+      "url": "https://apps.apple.com/us/app/loopy-ai-live-wallpapers-4k/id6753658744",
+      "summary": "An iPhone-exclusive theme and wallpaper app from my own studio: live wallpapers, matching themes, widgets and app icons. Built the full product end to end — Django backend and SwiftUI app.",
+      "points": [
+        "Live wallpapers in curated collections",
+        "Coordinated themes: widgets and app icons",
+        "Full backend in Django",
+        "iOS app in SwiftUI"
+      ],
+      "tags": [
+        "SwiftUI",
+        "Django",
+        "Widgets",
+        "Full Stack"
+      ]
+    },
+    {
       "name": "ShareTrip",
       "company": "ShareTrip",
       "period": "2023 – 2025",
@@ -253,6 +293,20 @@
         "Swift",
         "Maps",
         "SDK"
+      ]
+    },
+    {
+      "name": "OnFocus — Focus & Meditation",
+      "company": "OFPIXEL",
+      "period": "2025 – Present",
+      "appStoreId": "6744898884",
+      "url": "https://apps.apple.com/us/app/onfocus-focus-meditation/id6744898884",
+      "summary": "An iOS-exclusive meditation and app blocker app that helps users take back control of their time and stay productive.",
+      "points": [],
+      "tags": [
+        "iOS",
+        "Meditation",
+        "App Blocker"
       ]
     },
     {

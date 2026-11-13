@@ -99,7 +99,7 @@ const { openToWork, contact } = profile;
     transform: translateX(calc(var(--mx, 0) * 40%));
     transition: transform 0.4s ease-out;
   }
-  .dock ul { position: relative; display: flex; gap: clamp(0.6rem, 2.4vw, 1.1rem); }
+  .dock ul { position: relative; display: flex; flex-wrap: wrap; max-width: 25rem; gap: clamp(0.6rem, 2.4vw, 1.1rem); }
   .dock li { position: relative; transform-origin: bottom; transition: transform 0.35s var(--spring); }
   .dock a { display: block; }
   .dock img { width: clamp(2.75rem, 12.5vw, 4rem); border-radius: 22.5%; box-shadow: 0 0 0 1px var(--line); }
