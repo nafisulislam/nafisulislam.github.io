@@ -40,7 +40,7 @@ const rich = (s: string) => s.split(metric);
             {p.shots.length > 0 && (
               <div class="shots">
                 {p.shots.map((s, i) => (
-                  <Picture src={s} formats={['avif']} fallbackFormat="webp" width={280} densities={[1, 2]} alt={`${name} on the App Store, screenshot ${i + 1}`} loading="lazy" />
+                  <Picture src={s} formats={['avif']} fallbackFormat="webp" width={280} densities={[1, 2]} alt={`${name} screenshot ${i + 1}`} loading="lazy" />
                 ))}
               </div>
             )}
