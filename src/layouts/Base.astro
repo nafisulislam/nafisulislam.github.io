@@ -37,8 +37,8 @@ const person = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
-    {/* shortcut: og.png is a static hero capture (bakes in the years figure), re-capture when the hero copy changes */}
-    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    {/* shortcut: og.jpg is a static hero capture (bakes in the years figure), re-capture when the hero copy changes */}
+    <meta property="og:image" content={new URL('/og.jpg', Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>try { document.documentElement.dataset.theme = localStorage.theme || ''; } catch {}</script>
     <slot name="head" />
